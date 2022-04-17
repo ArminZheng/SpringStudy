@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- id：名字（唯一）
+         class：配置全限定名 -->
+    <bean id="person" class="com.arminzheng.basic.Person" primary="true" lazy-init="true">
+        <property name="name" value="小花"/>
+        <property name="age" value="18"/>
+    </bean>
+    <bean id="person1" class="com.arminzheng.basic.Person" lazy-init="true"/>
+    <!-- 如果值使用一次，可以省略id值；但如果是多次或者被其他bean引用则不能省-->
+    <bean class="com.arminzheng.basic.Person" lazy-init="true"/>
+
+    <!-- name 别名可以多个，id只能有一个-->
+    <bean id="person2" name="person小名或别名,别名可以取多个,逗号隔开" class="com.arminzheng.basic.Person" p:name="睡神" p:age="17"/>
+    <bean name="省略id后name等效于id" class="com.arminzheng.basic.Person"/>
+    <!-- name 存在原因：xml中的id属性有限制（字母开头，接字母、数字、下划线、连字符）当然现在xml已经没有该限制了 -->
+
+    <bean id="customer" class="com.arminzheng.construct.Customer">
+        <!--constructor-arg 标签 其中index可以省略-->
+        <constructor-arg index="0" value="cheng"/>
+        <constructor-arg index="1" value="28"/>
+    </bean>
+    <bean id="customer0" class="com.arminzheng.construct.Customer">
+        <!--当构造器重载，参数个数重复，需指定类型-->
+        <constructor-arg type="int" value="28"/>
+    </bean>
+    <bean id="customer1" class="com.arminzheng.construct.Customer" c:name="zhangSan" c:age="19"/>
+    <bean id="customer2" class="com.arminzheng.construct.Customer" c:name="zhangSanSan"/>
+    <bean id="customer3" class="com.arminzheng.construct.Customer" c:age="29"/>
+
+    <!--FactoryBean-->
+    <bean id="conn" class="com.arminzheng.factory.ConnectionFactoryBean"
+          p:className="com.mysql.jdbc.Driver"
+          p:url="jdbc:mysql://10.8.206.141:3306?useSSL=false"
+          p:username="root"
+          p:password="root"/>
+    <!--实例工厂: 工厂Bean + 工厂方法（超时会占用时间）-->
+    <bean id="connFactoryBean" class="com.arminzheng.factory.ConnectionFactory"
+          p:className="com.mysql.jdbc.Driver"
+          p:url="jdbc:mysql://10.8.206.141:3306?useSSL=false"
+          p:username="root"
+          p:password="root"/>
+    <!--<bean id="conn2" factory-bean="connFactoryBean" factory-method="getConnection"/>-->
+
+    <!--静态工厂：仅需 工厂方法（超时会占用时间）-->
+    <!--<bean id="conn3" class="StaticConnectionFactory" factory-method="getConnection"/>-->
+
+    <!--生命周期-->
+    <!--创建阶段：时机不同 -> Spring工厂创建时/获取对象时-->
+    <bean id="account" class="com.arminzheng.scope.Account" scope="prototype"/>
+    <bean id="account1" class="com.arminzheng.scope.Account" scope="singleton" lazy-init="true"/>
+
+    <!--初始化阶段-->
+    <bean id="product" class="com.arminzheng.life.Product" init-method="myInit" destroy-method="myDestroy"/>
+</beans>
