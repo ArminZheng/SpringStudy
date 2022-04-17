@@ -6,7 +6,7 @@
 
     <context:property-placeholder location="classpath:/db.properties"/>
 
-    <bean id="myDateConverter" class="com.arminzheng.converter.MyDateConverter"/>
+    <bean id="myDateConverter" class="com.arminzheng.converter.MyDateConverter" p:pattern="${data.format.pattern}"/>
 
     <!--用于注册类型转换器-->
     <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
