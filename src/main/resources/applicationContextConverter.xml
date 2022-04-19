@@ -8,7 +8,7 @@
 
     <bean id="myDateConverter" class="com.arminzheng.converter.MyDateConverter" p:pattern="${data.format.pattern}"/>
 
-    <!--用于注册类型转换器-->
+    <!--用于注册类型转换器 是给Spring提供的 所以命名有要求 必须是 conversionService -->
     <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
         <property name="converters">
             <set>
