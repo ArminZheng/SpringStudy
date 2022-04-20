@@ -32,7 +32,7 @@
     <bean id="customer2" class="com.arminzheng.construct.Customer" c:name="zhangSanSan"/>
     <bean id="customer3" class="com.arminzheng.construct.Customer" c:age="29"/>
 
-    <!--FactoryBean-->
+    <!--FactoryBean: 获取时，使用 conn 会得到 Bean，使用 &conn 会得到 ConnectionFactoryBean -->
     <bean id="conn" class="com.arminzheng.factory.ConnectionFactoryBean"
           p:className="com.mysql.jdbc.Driver"
           p:url="jdbc:mysql://10.8.206.141:3306?useSSL=false"
@@ -44,10 +44,10 @@
           p:url="jdbc:mysql://10.8.206.141:3306?useSSL=false"
           p:username="root"
           p:password="root"/>
-    <!--<bean id="conn2" factory-bean="connFactoryBean" factory-method="getConnection"/>-->
+    <bean id="conn2" factory-bean="connFactoryBean" factory-method="getConnection"/>
 
     <!--静态工厂：仅需 工厂方法（超时会占用时间）-->
-    <!--<bean id="conn3" class="StaticConnectionFactory" factory-method="getConnection"/>-->
+    <bean id="conn3" class="com.arminzheng.factory.StaticConnectionFactory" factory-method="getConnection"/>
 
     <!--生命周期-->
     <!--创建阶段：时机不同 -> Spring工厂创建时/获取对象时-->
