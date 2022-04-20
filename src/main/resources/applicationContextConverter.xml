@@ -9,6 +9,7 @@
     <bean id="myDateConverter" class="com.arminzheng.converter.MyDateConverter" p:pattern="${data.format.pattern}"/>
 
     <!--用于注册类型转换器 是给Spring提供的 所以命名有要求 必须是 conversionService -->
+    <!--    如果不提供自定义转化器给Spring 则必须以 2022/04/20 这样的斜杠方式赋值 Spring默认提供的日期转换器是这种格式 -->
     <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
         <property name="converters">
             <set>

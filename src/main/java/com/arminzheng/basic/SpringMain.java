@@ -3,7 +3,7 @@ package com.arminzheng.basic;
 import com.arminzheng.construct.Broker;
 import com.arminzheng.construct.Customer;
 import com.arminzheng.factory.ConnectionFactoryBean;
-import com.arminzheng.scope.Account;
+import com.arminzheng.life.scope.Account;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

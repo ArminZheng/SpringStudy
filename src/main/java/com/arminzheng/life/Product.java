@@ -4,7 +4,7 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
 /**
- * Product
+ * 生命周期：实例化，初始化，销毁
  *
  * @author zy
  * @version 2022/4/15
@@ -18,7 +18,7 @@ public class Product implements InitializingBean, DisposableBean {
     /**
      * 做一些初始化操作，最后Spring会进行调用
      *
-     * @throws Exception
+     * @throws Exception null
      */
     @Override
     public void afterPropertiesSet() throws Exception {

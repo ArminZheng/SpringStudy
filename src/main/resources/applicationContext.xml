@@ -51,8 +51,8 @@
 
     <!--生命周期-->
     <!--创建阶段：时机不同 -> Spring工厂创建时/获取对象时-->
-    <bean id="account" class="com.arminzheng.scope.Account" scope="prototype"/>
-    <bean id="account1" class="com.arminzheng.scope.Account" scope="singleton" lazy-init="true"/>
+    <bean id="account" class="com.arminzheng.life.scope.Account" scope="prototype"/>
+    <bean id="account1" class="com.arminzheng.life.scope.Account" scope="singleton" lazy-init="true"/>
 
     <!--初始化阶段-->
     <bean id="product" class="com.arminzheng.life.Product" init-method="myInit" destroy-method="myDestroy"/>
