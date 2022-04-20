@@ -5,7 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- id：名字（唯一）
-         class：配置全限定名 -->
+         class：配置全限定名
+         primary：存在多个同名的类 以及接口实现类 可以使用primary属性 或者 @Primary 注解来标注为首选
+          -->
     <bean id="person" class="com.arminzheng.basic.Person" primary="true" lazy-init="true">
         <property name="name" value="小花"/>
         <property name="age" value="18"/>
