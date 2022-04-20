@@ -39,14 +39,14 @@ public class SpringMain {
         // main.brokerTest();
 
         // 4. FactoryBean
-        // main.factoryBeanTest();
+        main.factoryBeanTest();
 
         // 下面两种都是为了避免spring框架侵入 和 整合遗留系统
         // 5. 实例工厂
-        // main.connectionFactoryTest();
+        main.connectionFactoryTest();
 
         // 6. 静态工厂
-        // main.staticConnectionFactoryTest();
+        main.staticConnectionFactoryTest();
 
         // 7. 简单对象的创建次数（singleton or prototype）
         // main.accountTest();
@@ -54,7 +54,7 @@ public class SpringMain {
         //    为什么要控制对象的创建次数：节省内存
 
         // 9. 初始化
-        main.productTest();
+        // main.productTest();
     }
 
     public void productTest() {
@@ -130,6 +130,8 @@ public class SpringMain {
     public void factoryBeanTest() {
         Connection connection = (Connection) ioc.getBean("conn");
         System.out.println("connection = " + connection);
+        Connection connection1 = (Connection) ioc.getBean("conn");
+        System.out.println("connection1 = " + connection1);
         // 加上& and符号就会取工厂对象，而不是加工对象
         ConnectionFactoryBean ctxBean = (ConnectionFactoryBean) ioc.getBean("&conn");
         System.out.println("ctxBean = " + ctxBean);
@@ -138,10 +140,14 @@ public class SpringMain {
     private void connectionFactoryTest() {
         Connection connection = (Connection) ioc.getBean("conn2");
         System.out.println("connection = " + connection);
+        Connection connection1 = (Connection) ioc.getBean("conn2");
+        System.out.println("connection1 = " + connection1);
     }
 
     private void staticConnectionFactoryTest() {
         Connection connection = (Connection) ioc.getBean("conn3");
         System.out.println("connection = " + connection);
+        Connection connection1 = (Connection) ioc.getBean("conn3");
+        System.out.println("connection1 = " + connection1);
     }
 }

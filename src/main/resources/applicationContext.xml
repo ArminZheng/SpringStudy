@@ -37,17 +37,18 @@
           p:className="com.mysql.jdbc.Driver"
           p:url="jdbc:mysql://10.8.206.141:3306?useSSL=false"
           p:username="root"
-          p:password="root"/>
+          p:password="root"
+          scope="prototype"/><!-- 总是被做多 -->
     <!--实例工厂: 工厂Bean + 工厂方法（超时会占用时间）-->
     <bean id="connFactoryBean" class="com.arminzheng.factory.ConnectionFactory"
           p:className="com.mysql.jdbc.Driver"
           p:url="jdbc:mysql://10.8.206.141:3306?useSSL=false"
           p:username="root"
           p:password="root"/>
-    <bean id="conn2" factory-bean="connFactoryBean" factory-method="getConnection"/>
+    <bean id="conn2" factory-bean="connFactoryBean" factory-method="getConnection" scope="prototype"/>
 
     <!--静态工厂：仅需 工厂方法（超时会占用时间）-->
-    <bean id="conn3" class="com.arminzheng.factory.StaticConnectionFactory" factory-method="getConnection"/>
+    <bean id="conn3" class="com.arminzheng.factory.StaticConnectionFactory" factory-method="getConnection" scope="prototype"/>
 
     <!--生命周期-->
     <!--创建阶段：时机不同 -> Spring工厂创建时/获取对象时-->

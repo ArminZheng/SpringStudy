@@ -46,6 +46,6 @@ public class ConnectionFactoryBean implements FactoryBean<Connection> {
 
         // 连接对象Connection不能被共用，得设为false
         // SqlSessionFactory在mybatis里面是一个重量级资源（占内存，只创建一个；线程安全的；），得设为true
-        return false;
+        return true;
     }
 }
