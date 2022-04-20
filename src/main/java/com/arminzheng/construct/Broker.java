@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Lazy // 可以使用在类上 方法上
 @Primary // 可以使用在一个接口 多个实现类的其中一个上，作为首选
+/* @Component @Bean <bean/> 都会被解析为 BeanDefinition 对象*/
 public class Broker {
 
     private Customer customer;
