@@ -11,6 +11,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(User user) {
         System.out.println("UserServiceImpl.register 业务运算 + dao 操作");
+        // throw new RuntimeException("test exception!");
     }
 
     @Override

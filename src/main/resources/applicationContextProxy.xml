@@ -2,11 +2,18 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
     <bean id="userService" class="com.arminzheng.proxy.UserServiceImpl"/>
-    <bean id="before" class="com.arminzheng.proxy.dynamic.Before"/>
+    <bean id="before" class="com.arminzheng.dynamic.MyMethodBeforeAdvice"/>
+
+    <bean id="around" class="com.arminzheng.dynamic.AroundMethodInterceptor"/>
 
     <aop:config>
-        <aop:pointcut id="pc" expression="execution(* *(..))"/>
+        <aop:pointcut id="pc" expression="execution(* com..UserService.register(com.arminzheng.proxy.User,..))"/>
+        <aop:pointcut id="pc1" expression="args(String, String)"/>
         <aop:advisor advice-ref="before" pointcut-ref="pc"/>
+        <aop:advisor advice-ref="around" pointcut-ref="pc"/>
+        <aop:advisor advice-ref="around" pointcut-ref="pc1"/>
     </aop:config>
 </beans>

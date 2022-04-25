@@ -1,4 +1,4 @@
-package com.arminzheng.proxy.dynamic;
+package com.arminzheng.dynamic;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.MethodBeforeAdvice;
@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
  * @version 2022/4/21
  */
 @Slf4j
-public class Before implements MethodBeforeAdvice {
+public class MyMethodBeforeAdvice implements MethodBeforeAdvice {
 
     @Override
     public void before(Method method, Object[] objects, Object o) throws Throwable {
