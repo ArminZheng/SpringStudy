@@ -39,18 +39,25 @@ public class TestJDKProxy {
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args)
                             throws Throwable {
+                        // System.out.println("proxy = " + proxy.getClass().getName());
                         Object result = method.invoke(userService, args);
                         System.out.println("<<<<<<<<< TestJDKProxy.invoke");
+
+                        // 就是代理后的对象，会造成递归调用，所以不怎么使用。
+                        // ((UserService)proxy).login("hello", "myhello");
                         return result;
                     }
                 };
 
         /* 借用类加载器：任意类都行 */
-        UserService userServiceProxy = (UserService) Proxy.newProxyInstance(UserService.class.getClassLoader(),
-                userService.getClass().getInterfaces(), // 3. 代理对象实现和原始对象相同的接口
-                handler);
+        UserService userServiceProxy =
+                (UserService)
+                        Proxy.newProxyInstance(
+                                UserService.class.getClassLoader(),
+                                userService.getClass().getInterfaces(), // 3. 代理对象实现和原始对象相同的接口
+                                handler);
 
-        userServiceProxy.login("hello", "myhello");
+        // userServiceProxy.login("hello", "myhello");
         userServiceProxy.register(new User());
     }
 }
