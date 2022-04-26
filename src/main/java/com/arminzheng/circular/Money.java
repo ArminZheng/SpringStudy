@@ -1,4 +1,4 @@
-package com.arminzheng.life.scope;
+package com.arminzheng.circular;
 
 import com.alibaba.fastjson.JSON;
 

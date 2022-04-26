@@ -1,4 +1,4 @@
-package com.arminzheng.life.scope;
+package com.arminzheng.circular;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,5 +38,10 @@ public class MoneyTest {
         System.out.println("accountI = " + accountI);
         System.out.println("accountI.getId() = " + accountI.getId());
         System.out.println("accountI.getMoney() = " + accountI.getMoney());
+        // 如果是 原型模式 ，则两个中有一个是单例，就能终结循环 circular，而如果都为 原型模型｜多例 则 Spring 无法解决
+        Money moneyI = ioc.getBean("moneyI", Money.class);
+        System.out.println("moneyI = " + moneyI);
+        Account accountII = ioc.getBean("accountI", Account.class);
+        System.out.println("accountII = " + accountII);
     }
 }

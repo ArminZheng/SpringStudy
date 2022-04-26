@@ -6,8 +6,8 @@
 
     <!-- 构造器循环依赖需要手动解决 -->
     <!--Is there an unresolvable circular reference?-->
-    <bean id="a" class="com.arminzheng.life.scope.Account" scope="prototype" c:money-ref="m"/>
-    <bean id="m" class="com.arminzheng.life.scope.Money" scope="prototype" c:account-ref="a"/>
+    <bean id="a" class="com.arminzheng.circular.Account" scope="prototype" c:money-ref="m"/>
+    <bean id="m" class="com.arminzheng.circular.Money" scope="prototype" c:account-ref="a"/>
 
     <!--
     /** 一级单例缓存：单例（对象）池，这里面的对象都是确保初始化完成，可以被正常使用的 它可能来自3级，或者2级 */
@@ -21,9 +21,9 @@
      * 它里面的属性可能是null，所以叫早期对象，early:半成品 未来在getBean付完属性后，会调addSingleton清掉2级，正式进入1级 */
     private final Map<String, Object> earlySingletonObjects = new HashMap(16);
     -->
-    <bean id="accountI" class="com.arminzheng.life.scope.Account" p:money-ref="moneyI" p:id="997">
+    <bean id="accountI" class="com.arminzheng.circular.Account" p:money-ref="moneyI" p:id="997">
         <!--<property name="money" ref="moneyI"/> Error: Only one approach may be used per property.-->
     </bean>
     <!-- 不能使用toString方法，因为会形成回环链表 -->
-    <bean id="moneyI" class="com.arminzheng.life.scope.Money" p:account-ref="accountI" p:id="007"/>
+    <bean id="moneyI" class="com.arminzheng.circular.Money" scope="prototype" p:account-ref="accountI" p:id="007"/>
 </beans>
