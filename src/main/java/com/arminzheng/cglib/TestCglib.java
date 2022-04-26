@@ -44,7 +44,9 @@ public class TestCglib {
                         System.out.println("<<<<<< Cglib log out <<<<<");
 
                         // StackOverflowError 代理后的对象，会被递归
-                        // ((UserService) o).register(new User());
+                        if (!"register".equals(method.getName())) {
+                            ((UserService) o).register(new User());
+                        }
                         return invoke;
                     }
                 };
