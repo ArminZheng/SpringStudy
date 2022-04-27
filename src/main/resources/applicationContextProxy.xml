@@ -3,15 +3,20 @@
        xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-
+    <!--1 原始方法-->
     <bean id="userService" class="com.arminzheng.proxy.UserServiceImpl"/>
+    <!--2 额外功能-->
     <bean id="before" class="com.arminzheng.dynamic.MyMethodBeforeAdvice"/>
 
     <bean id="around" class="com.arminzheng.dynamic.AroundMethodInterceptor"/>
 
+    <!--4 组装切面-->
     <aop:config proxy-target-class="true">
+        <!--3 切入点-->
         <aop:pointcut id="pc" expression="execution(* com..UserService.register(com.arminzheng.proxy.User,..))"/>
+        <!--pointcut 好比 被@Pointcut标记 切入点复用方法-->
         <aop:pointcut id="pc1" expression="args(String, String)"/>
+        <!-- advisor 好比 被@Around标记 附加额外功能的方法 -->
         <aop:advisor advice-ref="before" pointcut-ref="pc"/>
         <aop:advisor advice-ref="around" pointcut-ref="pc"/>
         <aop:advisor advice-ref="around" pointcut-ref="pc1"/>
@@ -20,4 +25,8 @@
     <bean id="myAspect" class="com.arminzheng.aspect.MyAspect"/>
     <!-- 告知Spring基于注解进行开发-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!--  jdk代理  Proxy.newProxyInstance() -->
+    <!--  cglib代理  Enhance.create() -->
+    <!--  jdk代理/cglib代理切换  proxy-target-class -->
 </beans>
