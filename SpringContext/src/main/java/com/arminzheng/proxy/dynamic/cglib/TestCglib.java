@@ -1,6 +1,7 @@
-package com.arminzheng.proxy.cglib;
+package com.arminzheng.proxy.dynamic.cglib;
 
 import com.arminzheng.proxy.simple.User;
+import org.springframework.cglib.core.DebuggingClassWriter;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
@@ -15,6 +16,8 @@ import java.lang.reflect.Method;
  */
 public class TestCglib {
     public static void main(String[] args) {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "/Users/armin/context");
+
         // 1 create primitive object
         UserService userService = new UserService();
         /* 2 通过cglib方式创建动态代理对象 */
@@ -30,7 +33,7 @@ public class TestCglib {
                      * @param o 创建好后的代理对象本身，也就是执行时的自己（一般很少使用）
                      * @param method 原始方法
                      * @param objects 原始方法参数
-                     * @param methodProxy
+                     * @param methodProxy 桥梁 去连接 fast class
                      * @return result
                      * @throws Throwable exception
                      */

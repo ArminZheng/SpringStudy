@@ -14,9 +14,10 @@
     </bean>
     <bean id="person1" class="com.arminzheng.basic.Person" lazy-init="true"/>
     <!-- 如果值使用一次，可以省略id值；但如果是多次或者被其他bean引用则不能省-->
+    <!-- id 会变为 com.arminzheng.basic.Person#0 并以此类推-->
     <bean class="com.arminzheng.basic.Person" lazy-init="true"/>
 
-    <!-- name 别名可以多个，id只能有一个-->
+    <!-- 一个 bean 别名 name 可以取多个 逗号隔开，id只能有一个-->
     <bean id="person2" name="person小名或别名,别名可以取多个,逗号隔开" class="com.arminzheng.basic.Person" p:name="睡神" p:age="17"/>
     <bean name="省略id后name等效于id" class="com.arminzheng.basic.Person"/>
     <!-- name 存在原因：xml中的id属性有限制（字母开头，接字母、数字、下划线、连字符）当然现在xml已经没有该限制了 -->

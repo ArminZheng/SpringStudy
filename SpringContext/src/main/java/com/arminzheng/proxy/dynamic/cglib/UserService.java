@@ -1,4 +1,4 @@
-package com.arminzheng.proxy.cglib;
+package com.arminzheng.proxy.dynamic.cglib;
 
 import com.arminzheng.proxy.simple.User;
 

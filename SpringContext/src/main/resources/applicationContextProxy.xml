@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--1 原始方法-->
-    <bean id="userService" class="com.arminzheng.proxy.simple.UserServiceImpl"/>
+    <bean id="simpleUserService" class="com.arminzheng.proxy.simple.UserServiceImpl"/>
     <!--2 额外功能-->
     <bean id="before" class="com.arminzheng.proxy.dynamic.MyMethodBeforeAdvice"/>
 
@@ -29,4 +29,7 @@
     <!--  jdk代理  Proxy.newProxyInstance() -->
     <!--  cglib代理  Enhance.create() -->
     <!--  jdk代理/cglib代理切换  proxy-target-class -->
+
+    <!-- id 不重要 不单独调用。BeanPostProcessor 会全局处理所有的bean 不能多注册 -->
+    <bean id="myBeanPostProcessor" class="com.arminzheng.proxy.aspect.MyBeanPostProcessor"/>
 </beans>

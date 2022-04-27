@@ -1,4 +1,4 @@
-package com.arminzheng.proxy.jdk;
+package com.arminzheng.proxy.dynamic.jdk;
 
 import com.arminzheng.proxy.simple.User;
 import com.arminzheng.proxy.simple.UserService;
