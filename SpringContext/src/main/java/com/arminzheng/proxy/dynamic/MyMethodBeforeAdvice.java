@@ -1,4 +1,4 @@
-package com.arminzheng.dynamic;
+package com.arminzheng.proxy.dynamic;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.MethodBeforeAdvice;

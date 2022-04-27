@@ -1,8 +1,8 @@
-package com.arminzheng.jdk;
+package com.arminzheng.proxy.jdk;
 
-import com.arminzheng.proxy.User;
-import com.arminzheng.proxy.UserService;
-import com.arminzheng.proxy.UserServiceImpl;
+import com.arminzheng.proxy.simple.User;
+import com.arminzheng.proxy.simple.UserService;
+import com.arminzheng.proxy.simple.UserServiceImpl;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 

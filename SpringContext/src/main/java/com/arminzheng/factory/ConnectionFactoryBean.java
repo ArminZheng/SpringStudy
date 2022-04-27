@@ -44,8 +44,8 @@ public class ConnectionFactoryBean implements FactoryBean<Connection> {
     public boolean isSingleton() {
         // 只需要修改这一处就能切换 单例 和 prototype 了
 
-        // 连接对象Connection不能被共用，得设为false
-        // SqlSessionFactory在mybatis里面是一个重量级资源（占内存，只创建一个；线程安全的；），得设为true
+        // 1. 连接对象Connection不能被共用，得设为false
+        // 2. SqlSessionFactory在mybatis里面是一个重量级资源（占内存，只创建一个；线程安全的；），得设为true
         return true;
     }
 }

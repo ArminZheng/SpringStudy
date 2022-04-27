@@ -1,4 +1,4 @@
-package com.arminzheng.proxy;
+package com.arminzheng.proxy.simple;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

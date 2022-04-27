@@ -19,5 +19,6 @@
     </bean>
 
     <!--bean标签是没有顺序规定的-->
+    <!--进行转换到关键时 implements Converter<String, Date> -->
     <bean id="person" class="com.arminzheng.converter.Person" p:name="zhangsan" p:birthday="2022-04-18"/>
 </beans>

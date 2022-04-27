@@ -1,7 +1,7 @@
 package com.arminzheng.beanpost;
 
-import com.arminzheng.proxy.User;
-import com.arminzheng.proxy.UserService;
+import com.arminzheng.proxy.simple.User;
+import com.arminzheng.proxy.simple.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

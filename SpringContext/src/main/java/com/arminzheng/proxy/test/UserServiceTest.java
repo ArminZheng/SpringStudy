@@ -1,7 +1,7 @@
-package com.arminzheng.proxy;
+package com.arminzheng.proxy.test;
 
-import org.junit.Before;
-import org.junit.Test;
+import com.arminzheng.proxy.simple.User;
+import com.arminzheng.proxy.simple.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,15 +12,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @version 2022/4/21
  */
 public class UserServiceTest {
-    ApplicationContext ioc;
 
-    @Before
-    public void before() {
-        ioc = new ClassPathXmlApplicationContext("classpath:/applicationContextProxy.xml");
-    }
-
-    @Test
-    public void testI() {
+    public static void main(String[] args) {
+        ApplicationContext ioc =
+                new ClassPathXmlApplicationContext("classpath:/applicationContextProxy.xml");
         UserService userService = ioc.getBean("userService", UserService.class);
         userService.register(new User());
         userService.login("zs", "my_password");

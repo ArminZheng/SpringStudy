@@ -1,6 +1,6 @@
-package com.arminzheng.cglib;
+package com.arminzheng.proxy.cglib;
 
-import com.arminzheng.proxy.User;
+import com.arminzheng.proxy.simple.User;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;

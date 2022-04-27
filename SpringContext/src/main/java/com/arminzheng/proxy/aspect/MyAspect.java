@@ -1,4 +1,4 @@
-package com.arminzheng.aspect;
+package com.arminzheng.proxy.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

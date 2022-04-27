@@ -1,4 +1,4 @@
-package com.arminzheng.aspect;
+package com.arminzheng.proxy.aspect;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

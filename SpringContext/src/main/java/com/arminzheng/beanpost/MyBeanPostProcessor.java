@@ -1,6 +1,6 @@
 package com.arminzheng.beanpost;
 
-import com.arminzheng.proxy.UserService;
+import com.arminzheng.proxy.simple.UserService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 

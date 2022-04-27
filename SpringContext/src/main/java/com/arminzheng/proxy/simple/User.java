@@ -1,4 +1,4 @@
-package com.arminzheng.proxy;
+package com.arminzheng.proxy.simple;
 
 /**
  * User
