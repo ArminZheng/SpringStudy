@@ -28,7 +28,7 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-        System.out.println("Category.setName");
+        System.out.println("Category.setName: " + name);
     }
 
     public String toString() {

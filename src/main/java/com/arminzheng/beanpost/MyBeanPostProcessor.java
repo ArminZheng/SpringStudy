@@ -1,7 +1,10 @@
 package com.arminzheng.beanpost;
 
+import com.arminzheng.proxy.UserService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+
+import java.lang.reflect.Proxy;
 
 /**
  * MyBeanPostProcessor
@@ -18,10 +21,20 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object bean, String beanName)
             throws BeansException {
         if (bean instanceof Category) {
-            System.out.println("MyBeanPostProcessor.postProcessAfterInitialization");
+            System.out.println("MyBeanPostProcessor.postProcessAfterInitialization()");
             Category category = (Category) bean;
             category.setName("Johnson");
         }
+
+        // Apr 27 动态代理
+        if (bean instanceof UserService)
+            return Proxy.newProxyInstance(
+                    this.getClass().getClassLoader(),
+                    bean.getClass().getInterfaces(),
+                    (proxy, method, args) -> {
+                        System.out.println("---------- log in -----------");
+                        return method.invoke(bean, args);
+                    });
         return bean;
     }
 }

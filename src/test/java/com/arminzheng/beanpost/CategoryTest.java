@@ -1,5 +1,7 @@
 package com.arminzheng.beanpost;
 
+import com.arminzheng.proxy.User;
+import com.arminzheng.proxy.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -26,4 +28,10 @@ public class CategoryTest {
         System.out.println("category = " + category);
     }
 
+    @Test
+    public void testII() {
+        UserService userService = ioc.getBean("userService", UserService.class);
+        userService.login("first", "login");
+        userService.register(new User());
+    }
 }

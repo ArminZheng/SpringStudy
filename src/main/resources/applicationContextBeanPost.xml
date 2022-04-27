@@ -10,4 +10,6 @@
         Error: Only one approach may be used per property.
         -->
     <bean id="beanPostProcessor" class="com.arminzheng.beanpost.MyBeanPostProcessor"/>
+
+    <bean id="userService" class="com.arminzheng.proxy.UserServiceImpl"/>
 </beans>

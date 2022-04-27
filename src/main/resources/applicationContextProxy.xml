@@ -16,4 +16,8 @@
         <aop:advisor advice-ref="around" pointcut-ref="pc"/>
         <aop:advisor advice-ref="around" pointcut-ref="pc1"/>
     </aop:config>
+
+    <bean id="myAspect" class="com.arminzheng.aspect.MyAspect"/>
+    <!-- 告知Spring基于注解进行开发-->
+    <aop:aspectj-autoproxy/>
 </beans>
