@@ -9,7 +9,7 @@
 
     <bean id="around" class="com.arminzheng.dynamic.AroundMethodInterceptor"/>
 
-    <aop:config>
+    <aop:config proxy-target-class="true">
         <aop:pointcut id="pc" expression="execution(* com..UserService.register(com.arminzheng.proxy.User,..))"/>
         <aop:pointcut id="pc1" expression="args(String, String)"/>
         <aop:advisor advice-ref="before" pointcut-ref="pc"/>
@@ -19,5 +19,5 @@
 
     <bean id="myAspect" class="com.arminzheng.aspect.MyAspect"/>
     <!-- 告知Spring基于注解进行开发-->
-    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>
