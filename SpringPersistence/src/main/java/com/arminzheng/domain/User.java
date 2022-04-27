@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
+
 /**
  * User
  *
@@ -91,4 +93,35 @@ public class User implements Serializable {
     private Date lastLoginDate;
     /** 柜员类型 */
     private String tellerType;
+
+    public User(
+            String userId,
+            String userName,
+            String loginId,
+            String userState,
+            String creator,
+            Date gmtCreate,
+            String modifier,
+            Date gmtModified) {
+        this.userId = userId;
+        this.userName = userName;
+        this.loginId = loginId;
+        this.userState = userState;
+        this.creator = creator;
+        this.gmtCreate = gmtCreate;
+        this.modifier = modifier;
+        this.gmtModified = gmtModified;
+    }
+
+    public static User getInstance() {
+        return new User(
+                UUID.randomUUID().toString().replaceAll("-", ""),
+                "zhangshan",
+                "zhangshan",
+                "0",
+                "1",
+                new Date(),
+                "1",
+                new Date());
+    }
 }

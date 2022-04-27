@@ -5,6 +5,16 @@
         <typeAlias type="com.arminzheng.domain.User" alias="user"/>
     </typeAliases>
 
+    <!--
+    MB传统开发步骤
+        1. 实体
+        2. 实体别名
+        3. 表
+        4. 创建DAO接口
+        5. 实现Mapper文件
+        6. 注册Mapper文件
+        7. MybatisAPI调用
+    -->
     <environments default="mysql">
         <environment id="mysql">
             <transactionManager type="JDBC"></transactionManager>
