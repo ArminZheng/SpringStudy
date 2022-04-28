@@ -5,52 +5,63 @@
 <mapper namespace="com.arminzheng.mapper.UserMapper">
 
     <insert id="save" parameterType="User">
-        insert into base_user(user_id, user_name,login_id,user_state,creator,gmt_create,modifier,gmt_modified)
-        value (#{userId},#{userName},#{loginId},#{userState},#{creator},#{gmtCreate},#{modifier},#{gmtModified})
+        insert into base_user(user_id, user_name, login_id, user_state, creator, gmt_create, modifier, gmt_modified)
+            value (#{userId}, #{userName}, #{loginId}, #{userState}, #{creator}, #{gmtCreate}, #{modifier},
+                   #{gmtModified})
     </insert>
-    
+
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+        <include refid="columnList"/>
+        from base_user where login_id=#{loginId} limit 1
+    </select>
+
+    <select id="count" resultType="long">
+        select count(*)
+        from base_user
+    </select>
 
     <resultMap id="BaseResultMap" type="com.arminzheng.domain.User">
-            <id property="userId" column="user_id" jdbcType="VARCHAR"/>
-            <result property="depId" column="dep_id" jdbcType="VARCHAR"/>
-            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
-            <result property="loginId" column="login_id" jdbcType="VARCHAR"/>
-            <result property="passwd" column="passwd" jdbcType="VARCHAR"/>
-            <result property="mobileNo" column="mobile_no" jdbcType="VARCHAR"/>
-            <result property="phoneNo" column="phone_no" jdbcType="VARCHAR"/>
-            <result property="address" column="address" jdbcType="VARCHAR"/>
-            <result property="postCode" column="post_code" jdbcType="VARCHAR"/>
-            <result property="email" column="email" jdbcType="VARCHAR"/>
-            <result property="userState" column="user_state" jdbcType="VARCHAR"/>
-            <result property="remark" column="remark" jdbcType="VARCHAR"/>
-            <result property="creator" column="creator" jdbcType="VARCHAR"/>
-            <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
-            <result property="modifier" column="modifier" jdbcType="VARCHAR"/>
-            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
-            <result property="faxNo" column="fax_no" jdbcType="VARCHAR"/>
-            <result property="receiveMessage" column="receive_message" jdbcType="VARCHAR"/>
-            <result property="receiveEmail" column="receive_email" jdbcType="VARCHAR"/>
-            <result property="ext01" column="ext01" jdbcType="VARCHAR"/>
-            <result property="ext02" column="ext02" jdbcType="VARCHAR"/>
-            <result property="ext03" column="ext03" jdbcType="VARCHAR"/>
-            <result property="ext04" column="ext04" jdbcType="VARCHAR"/>
-            <result property="ext05" column="ext05" jdbcType="DECIMAL"/>
-            <result property="ext06" column="ext06" jdbcType="TIMESTAMP"/>
-            <result property="ext07" column="ext07" jdbcType="TIMESTAMP"/>
-            <result property="ext08" column="ext08" jdbcType="DECIMAL"/>
-            <result property="ext09" column="ext09" jdbcType="DECIMAL"/>
-            <result property="orgId" column="org_id" jdbcType="VARCHAR"/>
-            <result property="source" column="source" jdbcType="VARCHAR"/>
-            <result property="orgCode" column="org_code" jdbcType="VARCHAR"/>
-            <result property="roleCode" column="role_code" jdbcType="VARCHAR"/>
-            <result property="loginErrorTimes" column="login_error_times" jdbcType="DECIMAL"/>
-            <result property="lastLoginDatetime" column="last_login_datetime" jdbcType="TIMESTAMP"/>
-            <result property="weixinId" column="weixin_id" jdbcType="VARCHAR"/>
-            <result property="lastLoginDate" column="last_login_date" jdbcType="TIMESTAMP"/>
-            <result property="tellerType" column="teller_type" jdbcType="VARCHAR"/>
+        <id property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="depId" column="dep_id" jdbcType="VARCHAR"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="loginId" column="login_id" jdbcType="VARCHAR"/>
+        <result property="passwd" column="passwd" jdbcType="VARCHAR"/>
+        <result property="mobileNo" column="mobile_no" jdbcType="VARCHAR"/>
+        <result property="phoneNo" column="phone_no" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="postCode" column="post_code" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="userState" column="user_state" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="creator" column="creator" jdbcType="VARCHAR"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+        <result property="modifier" column="modifier" jdbcType="VARCHAR"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+        <result property="faxNo" column="fax_no" jdbcType="VARCHAR"/>
+        <result property="receiveMessage" column="receive_message" jdbcType="VARCHAR"/>
+        <result property="receiveEmail" column="receive_email" jdbcType="VARCHAR"/>
+        <result property="ext01" column="ext01" jdbcType="VARCHAR"/>
+        <result property="ext02" column="ext02" jdbcType="VARCHAR"/>
+        <result property="ext03" column="ext03" jdbcType="VARCHAR"/>
+        <result property="ext04" column="ext04" jdbcType="VARCHAR"/>
+        <result property="ext05" column="ext05" jdbcType="DECIMAL"/>
+        <result property="ext06" column="ext06" jdbcType="TIMESTAMP"/>
+        <result property="ext07" column="ext07" jdbcType="TIMESTAMP"/>
+        <result property="ext08" column="ext08" jdbcType="DECIMAL"/>
+        <result property="ext09" column="ext09" jdbcType="DECIMAL"/>
+        <result property="orgId" column="org_id" jdbcType="VARCHAR"/>
+        <result property="source" column="source" jdbcType="VARCHAR"/>
+        <result property="orgCode" column="org_code" jdbcType="VARCHAR"/>
+        <result property="roleCode" column="role_code" jdbcType="VARCHAR"/>
+        <result property="loginErrorTimes" column="login_error_times" jdbcType="DECIMAL"/>
+        <result property="lastLoginDatetime" column="last_login_datetime" jdbcType="TIMESTAMP"/>
+        <result property="weixinId" column="weixin_id" jdbcType="VARCHAR"/>
+        <result property="lastLoginDate" column="last_login_date" jdbcType="TIMESTAMP"/>
+        <result property="tellerType" column="teller_type" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
+    <sql id="columnList">
         user_id,dep_id,user_name,
         login_id,passwd,mobile_no,
         phone_no,address,post_code,
