@@ -3,13 +3,13 @@ package com.arminzheng.controller;
 import com.arminzheng.domain.User;
 import com.arminzheng.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * TestController
@@ -20,8 +20,10 @@ import java.io.InputStream;
 @Slf4j
 public class TestResourcesController {
     public static void main(String[] args) throws IOException {
-        InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
-        SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        // InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
+        // SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        Resource classPathResource = new ClassPathResource("mybatis-config.xml");
+        SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(classPathResource.getInputStream());
 
         SqlSession sqlSession = sessionFactory.openSession();
 
