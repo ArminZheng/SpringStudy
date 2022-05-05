@@ -35,7 +35,7 @@ public class MyAspect {
      * @return 返回值
      * @throws Throwable 执行异常
      */
-    @Around("execution(* login(..))")
+    @Around("execution(* com.arminzheng.proxy.simple.UserService.login(..))")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("--------aspect log start----------");
         Object[] args = joinPoint.getArgs();
@@ -52,11 +52,11 @@ public class MyAspect {
     public void myPointcut() {}
 
     /**
-     * {@link com.arminzheng.proxy.UserServiceTest#testI() testI}
+     * {@link com.arminzheng.proxy.test.UserServiceTest#main(String[]) test}
      *
-     * @param joinPoint
-     * @return
-     * @throws Throwable
+     * @param joinPoint 目标
+     * @return 返回结果
+     * @throws Throwable 过程产生的异常
      */
     @Around("myPointcut()")
     public Object around1(ProceedingJoinPoint joinPoint) throws Throwable {

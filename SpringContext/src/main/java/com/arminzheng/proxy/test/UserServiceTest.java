@@ -18,7 +18,8 @@ public class UserServiceTest {
         // System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         ApplicationContext ioc =
                 new ClassPathXmlApplicationContext("classpath:/applicationContextProxy.xml");
-        UserService userService = ioc.getBean("simpleUserService", UserService.class);
+        UserService simpleUserService = ioc.getBean("simpleUserService", UserService.class);
+        UserService userService = ioc.getBean("userServiceImpl2", UserService.class);
         userService.register(new User());
         userService.login("zs", "my_password");
     }
