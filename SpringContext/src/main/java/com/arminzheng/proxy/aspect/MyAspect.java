@@ -52,7 +52,7 @@ public class MyAspect {
     public void myPointcut() {}
 
     /**
-     * {@link com.arminzheng.proxy.test.UserServiceTest#main(String[]) test}
+     * {@link com.arminzheng.proxy.generate.UserServiceTest#main(String[]) test}
      *
      * @param joinPoint 目标
      * @return 返回结果
